@@ -1,12 +1,16 @@
-const Main = () => {
+import Button from "@/app/components/Button";
+import Form from "../components/Form";
+
+const Page = () => {
   return (
     <>
       <h1>Your Collection</h1>
       <input type="search" placeholder="Search" />
-      <button>Add new sneakers</button>
+      <Button text="Add new sneakers" />
       <p>Seem’s like you still didn’t add any new sneaker to your collection</p>
+      <Form />
     </>
   );
 };
 
-export default Main;
+export default Page;

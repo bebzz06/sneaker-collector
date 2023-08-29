@@ -1,7 +1,6 @@
-import "@/globals.css";
+import "@/app/globals.css";
 import type { Metadata } from "next";
-import StyledComponentsRegistry from "@/lib/registry";
-import { boxing, excon } from "@/fonts/fonts";
+import { boxing, excon } from "@/app/assets/fonts";
 
 export const metadata: Metadata = {
   title: "Sneaker Collector",
@@ -16,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${boxing.variable} ${excon.variable}`}>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <main>{children}</main>
       </body>
     </html>
   );
