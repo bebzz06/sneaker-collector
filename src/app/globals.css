@@ -9,86 +9,60 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background-color: #eeeff0;
-  color: #191919;
+  color: var(--black, #191919);
   font-family: var(--font-excon);
   font-size: 16px;
   line-height: 150%;
 }
-
+input {
+  border: none;
+  width: 100%;
+}
+input:focus {
+  outline: none;
+}
+input::placeholder {
+  color: var(--gray-80, #ccc);
+}
 h1,
 h2 {
   font-family: var(--font-boxing);
+  line-height: 100%;
 }
 h1 {
   font-size: 4rem;
+}
+h2 {
+  font-size: 2.25rem;
+}
+
+.title {
+  font-family: var(--font-boxing);
   line-height: 100%;
+  font-size: 4rem;
 }
 
-.styled_button {
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: center;
-}
-.styled_button_container {
-  display: flex;
-  justify-content: center;
-  padding: 0.75rem 2rem;
-  border: none;
-  background: #191919;
-  color: #ffffff;
-  border-radius: 0.75rem;
-  cursor: pointer;
-}
-
-main {
-  display: flex;
-  border: 1px solid purple;
-  /* height: 100%; */
-
-  /* height: 100vh; */
-}
+/* 
+UTILITIES */
 .tc {
   text-align: center;
 }
-
-.svg-container {
-  width: 100%; /* SVG container takes full width */
-  max-width: 757px; /* Adjust the maximum width as needed */
-  /* margin: 0 auto; */
-  /*Center the SVG */
-}
-svg {
-  display: block; /* Remove default space below inline SVG */
-  width: 100%;
-  height: auto;
-  border: 1px solid black;
-}
-/* TRY PASSING SPECIFIC WIDTHS AND HEIGHTS TO THE SVG AS IT SHRINKS or flex shrinks or grows*/
-
-.welcome_copy {
-  /* display: flex;
-  flex-direction: column; */
-  justify-content: center;
-  gap: 1rem;
-}
-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border: 1px solid blue;
+.ts {
+  text-align: start;
 }
 
-@media screen and (max-width: 40rem) {
-  main {
-    flex-direction: column;
-    margin: 0 5%;
-    margin-top: 10.84%;
-    margin-bottom: 6%;
-    gap: 2.875rem;
+.border {
+  border: 1px solid red;
+}
+
+@media screen and (max-width: 75.75em) {
+  .title {
+    font-size: 3rem;
   }
 }
-@media screen and (max-width: 26rem) {
-  h1 {
-    font-size: 3rem;
+/* Ipad OS 14.7.1 and below */
+@media screen and (max-width: 50.625em) {
+  .title {
+    font-size: 2.25rem;
   }
 }

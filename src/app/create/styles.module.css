@@ -1,0 +1,48 @@
+.welcome_wrapper {
+  /* flexible spacing */
+  padding-top: 5.16129032258vh;
+  padding-left: 10.752688172vh;
+  padding-right: 10.752688172vh;
+  padding-bottom: 9.78494623656vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+.welcome_img {
+  grid-column: 1/8;
+}
+.welcome_text {
+  margin-top: 16.6666666667vh;
+  grid-column: 9/13;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.welcome_btn {
+  /* 53px-16px */
+  margin-top: 37px;
+}
+/* Ipad OS 14.7.1 and below */
+@media screen and (max-width: 50.625em) {
+  .welcome_wrapper {
+    /* flexible spacing */
+    padding-left: 2.36559139785vh;
+    padding-right: 2.36559139785vh;
+    padding-top: 10.8369098712vh;
+    padding-bottom: 6.00858369099vh;
+  }
+
+  .welcome_img {
+    grid-column: 1/13;
+  }
+  .welcome_text {
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    grid-column: 1/13;
+  }
+  .welcome_btn {
+    /* 69px-16px */
+    margin-top: 53px;
+  }
+}

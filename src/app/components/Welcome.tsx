@@ -1,7 +1,9 @@
+import styles from "./styles.module.css";
 const Welcome = () => {
   return (
-    <div className="svg-container">
+    <div className={styles.image_container}>
       <svg
+        className={styles.image}
         width="757"
         height="791"
         viewBox="0 0 757 791"
@@ -52,5 +54,4 @@ const Welcome = () => {
     </div>
   );
 };
-
 export default Welcome;

@@ -14,9 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${boxing.variable} ${excon.variable}`}>
-        <main>{children}</main>
-      </body>
+      <body className={`${boxing.variable} ${excon.variable}`}>{children}</body>
     </html>
   );
 }
