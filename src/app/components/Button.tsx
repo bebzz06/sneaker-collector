@@ -9,17 +9,27 @@ import PlusIcon from "./PlusIcon";
 
 interface IButtonProps {
   text: string;
-  type?: "primary" | "secondary";
+  type?: "submit";
   size?: "s" | "m" | "l";
+  onClick?: () => void;
+  onSubmit?: string;
 }
 
-const Button = ({ text, size = "l", type = "primary" }: IButtonProps) => {
+const Button = ({ text, size, type, onClick }: IButtonProps) => {
   const buttonClassName = `button ${type} ${size}`;
   const hasIcon = text === "Add new sneakers";
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+      console.log("here");
+    }
+  };
   return (
-    <div className={styles.btn_container}>
+    <div className={styles.btn_container} onClick={handleClick}>
       {hasIcon && <PlusIcon />}
-      <div className={styles.ml_8}>{text}</div>
+      <button type={type} className={styles.btn}>
+        {text}
+      </button>
     </div>
   );
 };

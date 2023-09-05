@@ -1,0 +1,32 @@
+.input_form {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--Gray-80, #ccc);
+}
+
+.label_form {
+  color: var(--Gray-50, #808080);
+}
+
+.spacing_form {
+  padding-bottom: 6.66666666667%;
+}
+
+.btn_spacing {
+  padding-top: 11.1627906977%;
+}
+.btn_spacing_error {
+  padding-top: 11.1627906977%;
+}
+.error_message {
+  color: red;
+}
+
+@media screen and (max-width: 75.75em) {
+  .btn_spacing {
+    padding-top: 36.2790697674%;
+  }
+  .btn_spacing_error {
+    padding-top: 96px;
+  }
+}

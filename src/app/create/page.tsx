@@ -16,19 +16,25 @@ const Page = () => {
       <section className={styles.welcome_text}>
         {isWideScreen ? (
           <div className="title">
-            Welcome <br></br>to a <br></br>sneaker<br></br> collector
+            Welcome <br></br>to a<br></br>sneaker
+            <br></br> collector
           </div>
         ) : (
           <div className="title tc">
-            Welcome <br></br>to a sneaker <br></br> collector
+            Welcome <br></br>to a sneaker
+            <br></br>
+            collector
           </div>
         )}
 
         {isWideScreen ? (
           <p>
-            This tool not only lets you showcase your prized sneaker<br></br>
-            collection but also provides you with the tools to curate,<br></br>
-            organize, and catalogue your sneakers<br></br> like never before.
+            This tool not only lets you showcase your prized sneaker
+            <br></br>
+            collection but also provides you with the tools to curate,
+            <br></br>
+            organize, and catalogue your sneakers
+            <br></br> like never before.
           </p>
         ) : (
           <p className="tc">

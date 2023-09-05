@@ -1,7 +1,9 @@
+import styles from "./styles.module.css";
 const PlusIcon = () => {
   return (
     <>
       <svg
+        className={styles.mr_8}
         width="24"
         height="24"
         viewBox="0 0 24 24"

@@ -3,8 +3,20 @@ import Button from "@/app/components/Button";
 import { Collection } from "../components/Collection";
 import Search from "../components/Search";
 import styles from "./styles.module.css";
+import { useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
+import Modal from "../components/Modal";
+import Form from "../components/Form/Form";
+
 const Page = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   const isWideScreen = useMediaQuery("(min-width: 810px)");
   return (
     <main className={styles.main_wrapper}>
@@ -15,7 +27,7 @@ const Page = () => {
       {isWideScreen ? (
         <section className={styles.main_search}>
           <Search />
-          <Button text="Add new sneakers" />
+          <Button onClick={openModal} text="Add new sneakers" />
         </section>
       ) : (
         <section className={styles.main_search}>
@@ -34,9 +46,12 @@ const Page = () => {
       </section>
       {!isWideScreen && (
         <section className={styles.main_btn}>
-          <Button text="Add new sneakers" />
+          <Button onClick={openModal} text="Add new sneakers" />
         </section>
       )}
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Form />
+      </Modal>
     </main>
   );
 };

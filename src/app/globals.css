@@ -24,6 +24,29 @@ input:focus {
 input::placeholder {
   color: var(--gray-80, #ccc);
 }
+
+/* DISABLE INPUT NUMBER DEFAULT STYLES */
+/* chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+/* firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  outline: inherit;
+  cursor: pointer;
+}
+
 h1,
 h2 {
   font-family: var(--font-boxing);
