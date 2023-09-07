@@ -7,7 +7,9 @@
 .label_form {
   color: var(--Gray-50, #808080);
 }
-
+.w_btn {
+  width: 100%;
+}
 .spacing_form {
   padding-bottom: 6.66666666667%;
 }

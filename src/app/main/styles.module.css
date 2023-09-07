@@ -9,21 +9,23 @@
 .main_title {
   grid-column: 1/8;
 }
-
+/* wraps search and button */
 .main_search {
-  display: grid;
-  grid-template-columns: 54.5794392523% 45.4205607477%;
   grid-column: 8/13;
   padding-top: 0.5em;
   padding-bottom: 0.5rem;
+  display: flex;
 }
 
 .main_btn {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   grid-column: 10/13;
 }
+/* custom button */
+.btn_widescreen {
+  margin-left: 1.49532711%;
+  width: 43.8432835821%;
+}
+
 .main_img {
   margin-top: 95px;
   grid-column: 3/11;
@@ -33,11 +35,15 @@
   grid-column: 1/13;
 }
 
-@media screen and (max-width: 67.5em) {
+@media screen and (max-width: 75.75em) {
   .main_search {
     display: flex;
     flex-direction: column;
     gap: 1em;
+  }
+  .btn_widescreen {
+    margin-left: 0;
+    width: 70%;
   }
 }
 /* Ipad OS 14.7.1 and below */
@@ -54,6 +60,7 @@
     margin-bottom: 1em;
   }
 
+  /* only wraps search bar */
   .main_search {
     gap: 0;
     display: block;

@@ -1,0 +1,22 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.75em;
+  padding-bottom: 0.75em;
+  border: none;
+  background: #191919;
+  border-radius: 0.75em;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  color: #ffffff;
+}
+.mr_8 {
+  margin-right: 0.5em;
+}
+
+@media screen and (max-width: 75.75em) {
+  .btn {
+    width: 100%;
+  }
+}

@@ -1,9 +1,11 @@
-import styles from "./styles.module.css";
-const PlusIcon = () => {
+interface IPlusIconProps {
+  className?: string;
+}
+const PlusIcon: React.FC<IPlusIconProps> = ({ className }) => {
   return (
     <>
       <svg
-        className={styles.mr_8}
+        className={className}
         width="24"
         height="24"
         viewBox="0 0 24 24"

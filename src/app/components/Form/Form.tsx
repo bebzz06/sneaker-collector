@@ -2,10 +2,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import FormField from "./FormField";
-import Button from "../Button";
+import Button from "../Button/Button";
 import { IFormData, FORM_FIELDS_SCHEMA } from "./constants";
 import styles from "./styles.module.css";
 
+const { btn_spacing_error, btn_spacing, w_btn } = styles;
 const Form = () => {
   const {
     register,
@@ -28,8 +29,8 @@ const Form = () => {
           key={field.name}
         />
       ))}
-      <div className={isError ? styles.btn_spacing_error : styles.btn_spacing}>
-        <Button text="Add new sneakers" type="submit" />
+      <div className={isError ? btn_spacing_error : btn_spacing}>
+        <Button customClass={w_btn} text="Add new sneakers" type="submit" />
       </div>
     </form>
   );

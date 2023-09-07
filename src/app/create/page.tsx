@@ -1,10 +1,12 @@
 "use client";
-import Button from "@/app/components/Button";
-import Welcome from "../components/Welcome";
+import Button from "@/app/components/Button/Button";
+import Welcome from "../assets/images/Welcome";
 import { useMediaQuery } from "usehooks-ts";
+import Link from "next/link";
 
 import styles from "./styles.module.css";
 
+const { w_screen } = styles;
 const Page = () => {
   const isWideScreen = useMediaQuery("(min-width: 810px)");
 
@@ -44,7 +46,9 @@ const Page = () => {
           </p>
         )}
         <div className={styles.welcome_btn}>
-          <Button text="Start your new collection" />
+          <Link href={"/main"}>
+            <Button customClass={w_screen} text="Start your new collection" />
+          </Link>
         </div>
       </section>
     </main>

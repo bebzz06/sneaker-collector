@@ -21,6 +21,10 @@
 .welcome_btn {
   /* 53px-16px */
   margin-top: 37px;
+  grid-column: 9/13;
+}
+.w_screen {
+  width: 58.3461396219%;
 }
 /* Ipad OS 14.7.1 and below */
 @media screen and (max-width: 50.625em) {
@@ -44,5 +48,9 @@
   .welcome_btn {
     /* 69px-16px */
     margin-top: 53px;
+    grid-column: 1/13;
+  }
+  .w_screen {
+    width: 100%;
   }
 }
