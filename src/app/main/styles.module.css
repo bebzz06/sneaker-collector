@@ -34,6 +34,14 @@
 .main_text {
   grid-column: 1/13;
 }
+.main_sneaker_cards {
+  display: flex;
+  grid-column: 1/13;
+  flex-wrap: wrap;
+  gap: 1.5243902439%;
+  /* fix after adding sorting buttons */
+  margin-top: 118px;
+}
 
 @media screen and (max-width: 75.75em) {
   .main_search {
@@ -65,9 +73,12 @@
     gap: 0;
     display: block;
     grid-column: 1/13;
-    margin-bottom: 122px;
     padding-top: 0;
     padding-bottom: 0;
+  }
+  /* add to main search on empty state */
+  .mb_large {
+    margin-bottom: 122px;
   }
   .main_img {
     margin-top: 0;
@@ -78,6 +89,22 @@
     margin-bottom: 195px;
   }
   .main_btn {
+    grid-column: 1/13;
+  }
+  .btn_fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    /* pb from design 6.00858369099vh */
+    padding: 1.71673819742vh 2.36559139785vh 3.00429184549vh 2.36559139785vh;
+    border-top: 1px solid #a9b5bc;
+    background: var(--White, #fff);
+  }
+  .main_sneaker_cards {
+    margin-top: 5.58139534884%;
+    display: block;
+    flex-wrap: nowrap;
     grid-column: 1/13;
   }
 }

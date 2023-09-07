@@ -13,6 +13,12 @@
 .spacing_form {
   padding-bottom: 6.66666666667%;
 }
+.no_spacing {
+  padding-bottom: 0;
+}
+.spacing_form:last-child {
+  padding-bottom: 0;
+}
 
 .btn_spacing {
   padding-top: 11.1627906977%;

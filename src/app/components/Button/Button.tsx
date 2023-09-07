@@ -12,7 +12,7 @@ interface IButtonProps {
 
 const { btn, mr_8 } = styles;
 const Button = ({ text, customClass, type, onClick }: IButtonProps) => {
-  const buttonClassName = `${btn} ${customClass}`;
+  const buttonClassName = customClass ? `${btn} ${customClass}` : `${btn}`;
   const hasIcon = text === "Add new sneakers";
   const handleClick = () => {
     if (onClick) {

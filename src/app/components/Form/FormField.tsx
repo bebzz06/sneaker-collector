@@ -8,7 +8,8 @@ interface IFormFieldProps {
   errors: any; // This should be of type FieldErrors from react-hook-form
   type: string;
 }
-const { spacing_form, label_form, input_form, error_message } = styles;
+const { spacing_form, label_form, input_form, error_message, no_spacing } =
+  styles;
 const FormField: React.FC<IFormFieldProps> = ({
   label,
   name,
@@ -16,7 +17,7 @@ const FormField: React.FC<IFormFieldProps> = ({
   errors,
   type,
 }) => (
-  <div className={name !== "year" ? spacing_form : ""}>
+  <div className={name !== "year" ? spacing_form : no_spacing}>
     <label className={label_form}>{label}</label>
     <input
       className={input_form}

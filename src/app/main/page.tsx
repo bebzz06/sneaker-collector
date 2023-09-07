@@ -18,6 +18,9 @@ const {
   main_text,
   main_wrapper,
   main_title,
+  btn_fixed,
+  main_sneaker_cards,
+  mb_large,
 } = styles;
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,7 +49,9 @@ const Page = () => {
           />
         </section>
       ) : (
-        <section className={main_search}>
+        <section
+          className={isEmptyState ? `${main_search} ${mb_large}` : main_search}
+        >
           <Search />
         </section>
       )}
@@ -63,20 +68,24 @@ const Page = () => {
           </section>
         </>
       ) : (
-        dummyData.map((data) => (
-          <SneakerCard
-            name={data.name}
-            brand={data.brand}
-            price={data.price}
-            size={data.size}
-            year={data.year}
-            key={data.name}
-          />
-        ))
+        <section className={main_sneaker_cards}>
+          {dummyData.map((data) => (
+            <SneakerCard
+              name={data.name}
+              brand={data.brand}
+              price={data.price}
+              size={data.size}
+              year={data.year}
+              key={data.name}
+            />
+          ))}
+        </section>
       )}
 
       {!isWideScreen && (
-        <section className={main_btn}>
+        <section
+          className={isEmptyState ? main_btn : `${main_btn} ${btn_fixed}`}
+        >
           <Button onClick={openModal} text="Add new sneakers" />
         </section>
       )}
