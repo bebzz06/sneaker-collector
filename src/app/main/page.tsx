@@ -1,15 +1,17 @@
 "use client";
-import Button from "@/app/components/Button/Button";
-import { Collection } from "../assets/images/Collection";
-import Search from "../components/SearchBar/Search";
 import styles from "./styles.module.css";
+import {
+  Button,
+  Search,
+  SneakerCard,
+  Modal,
+  Form,
+  InputSelect,
+} from "components";
+import { Collection } from "assets/images/Collection";
 import { useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
-import Modal from "../components/Modal/Modal";
-import Form from "../components/Form/Form";
-import { dummyData } from "../dummyData";
-import SneakerCard from "../components/Card/SneakerCard";
-import InputSelect from "../components/Select/InputSelect";
+import { dummyData } from "dummyData";
 
 const {
   btn_widescreen,

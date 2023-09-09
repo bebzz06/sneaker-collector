@@ -1,35 +1,19 @@
 "use client";
-import Button from "@/app/components/Button/Button";
-import Welcome from "../assets/images/Welcome";
 import { useMediaQuery } from "usehooks-ts";
-import Link from "next/link";
-
 import styles from "./styles.module.css";
 
-const { w_screen } = styles;
+const { welcome_text } = styles;
 const Page = () => {
   const isWideScreen = useMediaQuery("(min-width: 810px)");
 
   return (
-    <main className={styles.welcome_wrapper}>
-      <section className={styles.welcome_img}>
-        <Welcome />
-      </section>
-      <section className={styles.welcome_text}>
-        {isWideScreen ? (
+    <>
+      {isWideScreen ? (
+        <section className={welcome_text}>
           <div className="title">
             Welcome <br></br>to a<br></br>sneaker
             <br></br> collector
           </div>
-        ) : (
-          <div className="title tc">
-            Welcome <br></br>to a sneaker
-            <br></br>
-            collector
-          </div>
-        )}
-
-        {isWideScreen ? (
           <p>
             This tool not only lets you showcase your prized sneaker
             <br></br>
@@ -38,20 +22,22 @@ const Page = () => {
             organize, and catalogue your sneakers
             <br></br> like never before.
           </p>
-        ) : (
+        </section>
+      ) : (
+        <section className={welcome_text}>
+          <div className="title tc">
+            Welcome <br></br>to a sneaker
+            <br></br>
+            collector
+          </div>
           <p className="tc">
             This tool not only lets you showcase your prized sneaker collection
             but also provides you with the tools to curate, organize, and
             catalogue your sneakers like never before.
           </p>
-        )}
-        <div className={styles.welcome_btn}>
-          <Link href={"/main"}>
-            <Button customClass={w_screen} text="Start your new collection" />
-          </Link>
-        </div>
-      </section>
-    </main>
+        </section>
+      )}
+    </>
   );
 };
 
