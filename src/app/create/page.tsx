@@ -1,8 +1,10 @@
 "use client";
 import { useMediaQuery } from "usehooks-ts";
 import styles from "./styles.module.css";
+import { Button } from "components";
+import Link from "next/link";
 
-const { welcome_text } = styles;
+const { welcome_text, w_screen, welcome_btn } = styles;
 const Page = () => {
   const isWideScreen = useMediaQuery("(min-width: 810px)");
 
@@ -22,6 +24,11 @@ const Page = () => {
             organize, and catalogue your sneakers
             <br></br> like never before.
           </p>
+          <div className={welcome_btn}>
+            <Link href={"/main"}>
+              <Button customClass={w_screen} text="Start your new collection" />
+            </Link>
+          </div>
         </section>
       ) : (
         <section className={welcome_text}>
@@ -35,6 +42,11 @@ const Page = () => {
             but also provides you with the tools to curate, organize, and
             catalogue your sneakers like never before.
           </p>
+          <div className={welcome_btn}>
+            <Link href={"/main"}>
+              <Button customClass={w_screen} text="Start your new collection" />
+            </Link>
+          </div>
         </section>
       )}
     </>
