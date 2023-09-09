@@ -9,6 +9,7 @@ import Modal from "../components/Modal/Modal";
 import Form from "../components/Form/Form";
 import { dummyData } from "../dummyData";
 import SneakerCard from "../components/Card/SneakerCard";
+import InputSelect from "../components/Select/InputSelect";
 
 const {
   btn_widescreen,
@@ -21,6 +22,7 @@ const {
   btn_fixed,
   main_sneaker_cards,
   mb_large,
+  main_select,
 } = styles;
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -49,11 +51,18 @@ const Page = () => {
           />
         </section>
       ) : (
-        <section
-          className={isEmptyState ? `${main_search} ${mb_large}` : main_search}
-        >
-          <Search />
-        </section>
+        <>
+          <section className={main_select}>
+            <InputSelect />
+          </section>
+          <section
+            className={
+              isEmptyState ? `${main_search} ${mb_large}` : main_search
+            }
+          >
+            <Search />
+          </section>
+        </>
       )}
       {isEmptyState ? (
         <>
@@ -69,14 +78,14 @@ const Page = () => {
         </>
       ) : (
         <section className={main_sneaker_cards}>
-          {dummyData.map((data) => (
+          {dummyData.map((data, i) => (
             <SneakerCard
               name={data.name}
               brand={data.brand}
               price={data.price}
               size={data.size}
               year={data.year}
-              key={data.name}
+              key={i}
             />
           ))}
         </section>

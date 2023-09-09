@@ -80,6 +80,35 @@ UTILITIES */
 .border {
   border: 1px solid red;
 }
+/* Select component classes need to be @global css file to override default styling. */
+.select-container {
+  .select__control {
+    border: 1px solid #191919;
+    border-radius: 12px;
+    width: 52.5%;
+  }
+  .select__value-container {
+    padding: 0px 0px 0px 12px;
+  }
+  .select__input {
+    caret-color: transparent;
+  }
+  .select__indicator-separator {
+    width: 0;
+  }
+  .select__indicators {
+    padding: 0px 12px 0px 0px;
+    margin-left: 8px;
+  }
+  .select__indicator {
+    padding: 0;
+  }
+  .select__indicator > svg {
+    fill: #191919;
+    width: 16px;
+    height: 16px;
+  }
+}
 
 @media screen and (max-width: 75.75em) {
   .title {
