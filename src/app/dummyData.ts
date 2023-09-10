@@ -63,25 +63,4 @@ export const dummyData: IDummyData[] = [
     size: 12,
     year: 2018,
   },
-  {
-    name: "Air Jordan",
-    brand: "Nike",
-    price: 250,
-    size: 12,
-    year: 2018,
-  },
-  {
-    name: "Air Jordan",
-    brand: "Nike",
-    price: 250,
-    size: 12,
-    year: 2018,
-  },
-  {
-    name: "Air Jordan",
-    brand: "Nike",
-    price: 250,
-    size: 12,
-    year: 2018,
-  },
 ];
