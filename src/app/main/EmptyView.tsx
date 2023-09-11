@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import { Collection } from "assets/images/Collection";
 import { Search, Button } from "components";
 import { IMainPageViewProps } from "./constants";
+import { BUTTON_OPTIONS, BUTTON_SIZE } from "components/Button/constants";
 const { btn_widescreen, main_btn, main_img, main_search, main_text, mb_large } =
   styles;
 
@@ -20,9 +21,10 @@ const EmptyView: React.FC<IMainPageViewProps> = ({
         <section className={main_search}>
           <Search />
           <Button
+            size={BUTTON_SIZE.LARGE}
             customClass={btn_widescreen}
             onClick={handleOpenModal}
-            text="Add new sneakers"
+            text={BUTTON_OPTIONS.ADD_SNEAKERS}
           />
         </section>
       ) : (
@@ -42,7 +44,11 @@ const EmptyView: React.FC<IMainPageViewProps> = ({
       </section>
       {!isWideScreen && (
         <section className={main_btn}>
-          <Button onClick={handleOpenModal} text="Add new sneakers" />
+          <Button
+            size={BUTTON_SIZE.LARGE}
+            onClick={handleOpenModal}
+            text={BUTTON_OPTIONS.ADD_SNEAKERS}
+          />
         </section>
       )}
     </>

@@ -18,7 +18,7 @@ const Page = () => {
   };
 
   const isEmptyState = dummyData.length === 0;
-  const isWideScreen = useMediaQuery("(min-width: 810px)");
+  const isWideScreen = useMediaQuery("(min-width: 811px)");
   return (
     <>
       {isEmptyState ? (

@@ -1,3 +1,4 @@
+"use client";
 import IconSearch from "./IconSearch";
 import styles from "./styles.module.css";
 

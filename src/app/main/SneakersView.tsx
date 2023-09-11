@@ -2,8 +2,9 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { IMainPageViewProps } from "./constants";
-import { Search, Button, InputSelect, SneakerCard } from "components";
+import { Search, Button, InputSelect, SneakerCard, SortBy } from "components";
 import { dummyData } from "dummyData";
+import { BUTTON_OPTIONS, BUTTON_SIZE } from "components/Button/constants";
 const {
   btn_widescreen,
   main_btn,
@@ -11,6 +12,7 @@ const {
   btn_fixed,
   main_select,
   main_sneaker_cards,
+  main_sort_by,
 } = styles;
 
 const SneakersView: React.FC<IMainPageViewProps> = ({
@@ -23,14 +25,20 @@ const SneakersView: React.FC<IMainPageViewProps> = ({
   return (
     <>
       {isWideScreen ? (
-        <section className={main_search}>
-          <Search />
-          <Button
-            customClass={btn_widescreen}
-            onClick={handleOpenModal}
-            text="Add new sneakers"
-          />
-        </section>
+        <>
+          <section className={main_search}>
+            <Search />
+            <Button
+              size={BUTTON_SIZE.LARGE}
+              customClass={btn_widescreen}
+              onClick={handleOpenModal}
+              text={BUTTON_OPTIONS.ADD_SNEAKERS}
+            />
+          </section>
+          <section className={main_sort_by}>
+            <SortBy />
+          </section>
+        </>
       ) : (
         <>
           <section className={main_select}>
@@ -56,7 +64,11 @@ const SneakersView: React.FC<IMainPageViewProps> = ({
       </section>
       {!isWideScreen && (
         <section className={`${main_btn} ${btn_fixed}`}>
-          <Button onClick={handleOpenModal} text="Add new sneakers" />
+          <Button
+            size={BUTTON_SIZE.LARGE}
+            onClick={handleOpenModal}
+            text={BUTTON_OPTIONS.ADD_SNEAKERS}
+          />
         </section>
       )}
     </>

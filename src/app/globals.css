@@ -23,6 +23,7 @@ input:focus {
 }
 input::placeholder {
   color: var(--gray-80, #ccc);
+  font-size: 16px;
 }
 
 /* DISABLE INPUT NUMBER DEFAULT STYLES */

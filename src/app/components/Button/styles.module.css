@@ -1,4 +1,4 @@
-.btn {
+.btn_large {
   display: flex;
   justify-content: center;
   padding-top: 0.75em;
@@ -14,9 +14,26 @@
 .mr_8 {
   margin-right: 0.5em;
 }
+.btn_small {
+  display: flex;
+  border: 1px solid #191919;
+  border-radius: 12px;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 12px 6px 12px;
+}
+
+.active {
+  background: var(--Red, #ef233c);
+  color: #ffffff;
+}
+
+.active svg path {
+  fill: #ffffff;
+}
 
 @media screen and (max-width: 75.75em) {
-  .btn {
+  .btn_large {
     width: 100%;
   }
 }

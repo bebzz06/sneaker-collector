@@ -1,7 +1,5 @@
-interface IPlusIconProps {
-  className?: string;
-}
-const PlusIcon: React.FC<IPlusIconProps> = ({ className }) => {
+import { IIconProps } from "./constants";
+const PlusIcon: React.FC<IIconProps> = ({ className }) => {
   return (
     <>
       <svg

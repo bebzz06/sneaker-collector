@@ -34,6 +34,13 @@
 .main_text {
   grid-column: 1/13;
 }
+.main_sort_by {
+  grid-column: 8/13;
+  margin-top: 6.23655913978vh;
+  display: flex;
+  gap: 1.5873015873vw;
+  padding-left: 1.5873015873vw;
+}
 .main_sneaker_cards {
   display: flex;
   grid-column: 1/13;
@@ -52,6 +59,9 @@
   .btn_widescreen {
     margin-left: 0;
     width: 70%;
+  }
+  .main_sort_by {
+    flex-direction: column;
   }
 }
 /* Ipad OS 14.7.1 and below */

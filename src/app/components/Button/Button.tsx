@@ -1,29 +1,36 @@
 "use client";
-import styles from "./styles.module.css";
-import PlusIcon from "./PlusIcon";
+import { useState } from "react";
+import { IButtonProps, BUTTON_TYPE, BUTTON_SIZE } from "./constants";
+import { getButtonClassName, getIcon } from "./utils";
 
-interface IButtonProps {
-  text: string;
-  type?: "submit";
-  customClass?: string;
-  onClick?: () => void;
-  onSubmit?: string;
-}
+const Button: React.FC<IButtonProps> = ({
+  text,
+  customClass,
+  type = BUTTON_TYPE.BUTTON,
+  size,
+  onClick,
+}) => {
+  const [isActive, setIsActive] = useState(false);
 
-const { btn, mr_8 } = styles;
-const Button = ({ text, customClass, type, onClick }: IButtonProps) => {
-  const buttonClassName = customClass ? `${btn} ${customClass}` : `${btn}`;
-  const hasIcon = text === "Add new sneakers";
   const handleClick = () => {
-    if (onClick) {
-      onClick();
-    }
+    onClick?.();
+
+    size === BUTTON_SIZE.SMALL && toggleState();
   };
+  const toggleState = () => {
+    setIsActive(!isActive);
+  };
+  console.log(isActive, "HERE");
   return (
-    <button type={type} className={buttonClassName} onClick={handleClick}>
-      {hasIcon && <PlusIcon className={mr_8} />}
+    <button
+      type={type}
+      className={getButtonClassName(size, customClass, isActive)}
+      onClick={handleClick}
+    >
+      {getIcon(text)}
       {text}
     </button>
   );
 };
+
 export default Button;

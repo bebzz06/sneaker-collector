@@ -1,0 +1,10 @@
+.sortby_label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.sortby_btns {
+  display: flex;
+  gap: 0.529100529101vw;
+}

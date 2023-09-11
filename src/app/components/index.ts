@@ -4,3 +4,4 @@ export { default as SneakerCard } from "./Card";
 export { default as Modal } from "./Modal";
 export { default as Form } from "./Form";
 export { default as InputSelect } from "./Select";
+export { default as SortBy } from "./SortBy";

@@ -5,6 +5,11 @@ import FormField from "./FormField";
 import Button from "../Button/Button";
 import { IFormData, FORM_FIELDS_SCHEMA } from "./constants";
 import styles from "./styles.module.css";
+import {
+  BUTTON_TYPE,
+  BUTTON_SIZE,
+  BUTTON_OPTIONS,
+} from "components/Button/constants";
 
 const { btn_spacing_error, btn_spacing, w_btn } = styles;
 const Form = () => {
@@ -30,7 +35,12 @@ const Form = () => {
         />
       ))}
       <div className={isError ? btn_spacing_error : btn_spacing}>
-        <Button customClass={w_btn} text="Add new sneakers" type="submit" />
+        <Button
+          customClass={w_btn}
+          size={BUTTON_SIZE.LARGE}
+          text={BUTTON_OPTIONS.ADD_SNEAKERS}
+          type={BUTTON_TYPE.SUBMIT}
+        />
       </div>
     </form>
   );

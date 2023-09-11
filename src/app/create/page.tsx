@@ -3,10 +3,11 @@ import { useMediaQuery } from "usehooks-ts";
 import styles from "./styles.module.css";
 import { Button } from "components";
 import Link from "next/link";
+import { BUTTON_SIZE, BUTTON_OPTIONS } from "components/Button/constants";
 
 const { welcome_text, w_screen, welcome_btn } = styles;
 const Page = () => {
-  const isWideScreen = useMediaQuery("(min-width: 810px)");
+  const isWideScreen = useMediaQuery("(min-width: 811px)");
 
   return (
     <>
@@ -26,7 +27,11 @@ const Page = () => {
           </p>
           <div className={welcome_btn}>
             <Link href={"/main"}>
-              <Button customClass={w_screen} text="Start your new collection" />
+              <Button
+                size={BUTTON_SIZE.LARGE}
+                customClass={w_screen}
+                text={BUTTON_OPTIONS.START_COLLECTION}
+              />
             </Link>
           </div>
         </section>
@@ -44,7 +49,11 @@ const Page = () => {
           </p>
           <div className={welcome_btn}>
             <Link href={"/main"}>
-              <Button customClass={w_screen} text="Start your new collection" />
+              <Button
+                size={BUTTON_SIZE.LARGE}
+                customClass={w_screen}
+                text={BUTTON_OPTIONS.START_COLLECTION}
+              />
             </Link>
           </div>
         </section>
