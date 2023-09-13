@@ -19,6 +19,7 @@
   gap: 1em;
   height: 40.4301075269vh;
 }
+
 .welcome_btn {
   /* 53px-16px */
   margin-top: 37px;
@@ -26,6 +27,12 @@
 .w_screen {
   width: 58.3461396219%;
 }
+
+.small_screen {
+  display: none;
+}
+
+/* 
 /* Ipad OS 14.7.1 and below */
 @media screen and (max-width: 50.625em) {
   .welcome_wrapper {
@@ -45,11 +52,19 @@
     flex-direction: column;
     grid-column: 1/13;
   }
+
   .welcome_btn {
     /* 69px-16px */
     margin-top: 53px;
   }
   .w_screen {
     width: 100%;
+  }
+  .wide_screen {
+    display: none;
+  }
+  .small_screen {
+    display: initial;
+    text-align: center;
   }
 }

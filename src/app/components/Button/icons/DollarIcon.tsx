@@ -10,7 +10,7 @@ const DollarIcon: React.FC<IIconProps> = ({ className }) => {
       viewBox="0 0 16 16"
       fill="none"
     >
-      <g clip-path="url(#clip0_46_1608)">
+      <g clipPath="url(#clip0_46_1608)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"

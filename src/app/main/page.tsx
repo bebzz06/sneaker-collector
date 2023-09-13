@@ -1,33 +1,45 @@
 "use client";
-
 import { Modal, Form } from "components";
-
-import { useState } from "react";
-import { useMediaQuery } from "usehooks-ts";
-import { dummyData } from "dummyData";
+import { useState, useEffect } from "react";
 import EmptyView from "./EmptyView";
 import SneakersView from "./SneakersView";
+import { getSneakers } from "lib/fetchSneakers";
 
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sneakers, setSneakers] = useState(null);
+
   const openModal = () => {
     setIsModalOpen(true);
   };
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  const fetchSneakers = async () => {
+    //loading
+    let data;
+    try {
+      data = await getSneakers();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSneakers(data);
+    }
+  };
 
-  const isEmptyState = dummyData.length === 0;
-  const isWideScreen = useMediaQuery("(min-width: 811px)");
+  useEffect(() => {
+    fetchSneakers();
+  }, []);
+
   return (
     <>
-      {isEmptyState ? (
-        <EmptyView openModal={openModal} isWideScreen={isWideScreen} />
+      {!!sneakers ? (
+        <SneakersView sneakers={sneakers} openModal={openModal} />
       ) : (
-        <SneakersView openModal={openModal} isWideScreen={isWideScreen} />
+        <EmptyView openModal={openModal} />
       )}
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <Form />
+        <Form onClose={closeModal} />
       </Modal>
     </>
   );

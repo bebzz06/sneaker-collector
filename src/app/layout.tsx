@@ -1,6 +1,6 @@
-import "@/app/globals.css";
+import "globals.css";
 import type { Metadata } from "next";
-import { boxing, excon } from "@/app/assets/fonts/fonts";
+import { boxing, excon } from "assets/fonts/fonts";
 
 export const metadata: Metadata = {
   title: "Sneaker Collector",

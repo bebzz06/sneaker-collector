@@ -1,9 +1,7 @@
-"use client";
-import React from "react";
 import styles from "./styles.module.css";
-import Welcome from "../assets/images/Welcome";
+import Welcome from "assets/images/Welcome";
 
-const { welcome_wrapper, welcome_img, w_screen } = styles;
+const { welcome_wrapper, welcome_img } = styles;
 const CreateLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main className={welcome_wrapper}>

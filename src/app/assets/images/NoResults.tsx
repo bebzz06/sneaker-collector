@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 const { image } = styles;
-const NoResults = () => {
+export const NoResults = () => {
   return (
     <svg
       className={image}
@@ -34,5 +34,3 @@ const NoResults = () => {
     </svg>
   );
 };
-
-export default NoResults;

@@ -1,18 +1,13 @@
-interface IDummyData {
-  name: string;
-  brand: string;
-  price: number;
-  size: number;
-  year: number;
-}
+import { ISneakers } from "main/constants";
 
-export const dummyData: IDummyData[] = [
+export const dummyData: ISneakers[] = [
   {
     name: "Air Jordan",
     brand: "Nike",
     price: 250,
     size: 12,
     year: 2018,
+    _id: "1",
   },
   {
     name: "Air Jordan",
@@ -20,6 +15,7 @@ export const dummyData: IDummyData[] = [
     price: 250,
     size: 12,
     year: 2018,
+    _id: "4",
   },
   {
     name: "Air Jordan",
@@ -27,6 +23,7 @@ export const dummyData: IDummyData[] = [
     price: 250,
     size: 12,
     year: 2018,
+    _id: "2",
   },
   {
     name: "Air Jordan",
@@ -34,33 +31,6 @@ export const dummyData: IDummyData[] = [
     price: 250,
     size: 12,
     year: 2018,
-  },
-  {
-    name: "Air Jordan",
-    brand: "Nike",
-    price: 250,
-    size: 12,
-    year: 2018,
-  },
-  {
-    name: "Air Jordan",
-    brand: "Nike",
-    price: 250,
-    size: 12,
-    year: 2018,
-  },
-  {
-    name: "Air Jordan",
-    brand: "Nike",
-    price: 250,
-    size: 12,
-    year: 2018,
-  },
-  {
-    name: "Air Jordan",
-    brand: "Nike",
-    price: 250,
-    size: 12,
-    year: 2018,
+    _id: "3",
   },
 ];

@@ -1,7 +1,8 @@
 export interface IFormData {
   name: string;
   brand: string;
-  sizeUs: number;
+  size: number;
+  price: number;
   year: number;
 }
 

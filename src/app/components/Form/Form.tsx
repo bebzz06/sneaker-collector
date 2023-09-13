@@ -10,16 +10,27 @@ import {
   BUTTON_SIZE,
   BUTTON_OPTIONS,
 } from "components/Button/constants";
+import { submitSneakers } from "lib/fetchSneakers";
 
+interface IFormProps {
+  onClose: () => void;
+}
 const { btn_spacing_error, btn_spacing, w_btn } = styles;
-const Form = () => {
+const Form: React.FC<IFormProps> = ({ onClose }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormData>();
-  const onSubmit = (data: IFormData) => {
-    console.log(data);
+
+  const onSubmit = async (data: IFormData) => {
+    try {
+      await submitSneakers(data);
+    } catch (err) {
+      console.log(err, "ERROR");
+    } finally {
+      onClose();
+    }
   };
   const isError = Object.keys(errors).length;
   return (

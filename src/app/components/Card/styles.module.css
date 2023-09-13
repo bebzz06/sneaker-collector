@@ -24,6 +24,7 @@
 }
 .trash_icon {
   grid-column: 12/13;
+  cursor: pointer;
 }
 
 .card_details {

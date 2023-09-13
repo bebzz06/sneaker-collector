@@ -1,37 +1,38 @@
-"use client";
-import React from "react";
 import styles from "./styles.module.css";
 import { Collection } from "assets/images/Collection";
 import { Search, Button } from "components";
 import { IMainPageViewProps } from "./constants";
 import { BUTTON_OPTIONS, BUTTON_SIZE } from "components/Button/constants";
-const { btn_widescreen, main_btn, main_img, main_search, main_text, mb_large } =
-  styles;
+const {
+  btn_widescreen,
+  main_btn,
+  main_img,
+  main_search,
+  main_text,
+  mb_large,
+  wide_screen,
+  small_screen,
+} = styles;
 
-const EmptyView: React.FC<IMainPageViewProps> = ({
-  openModal,
-  isWideScreen,
-}) => {
+const EmptyView: React.FC<IMainPageViewProps> = ({ openModal }) => {
   const handleOpenModal = () => {
     openModal();
   };
   return (
     <>
-      {isWideScreen ? (
-        <section className={main_search}>
-          <Search />
-          <Button
-            size={BUTTON_SIZE.LARGE}
-            customClass={btn_widescreen}
-            onClick={handleOpenModal}
-            text={BUTTON_OPTIONS.ADD_SNEAKERS}
-          />
-        </section>
-      ) : (
-        <section className={`${main_search} ${mb_large}`}>
-          <Search />
-        </section>
-      )}
+      <section className={`${main_search} ${wide_screen}`}>
+        <Search />
+        <Button
+          size={BUTTON_SIZE.LARGE}
+          customClass={btn_widescreen}
+          onClick={handleOpenModal}
+          text={BUTTON_OPTIONS.ADD_SNEAKERS}
+        />
+      </section>
+
+      <section className={`${main_search} ${mb_large} ${small_screen}`}>
+        <Search />
+      </section>
 
       <section className={main_img}>
         <Collection />
@@ -42,15 +43,14 @@ const EmptyView: React.FC<IMainPageViewProps> = ({
           collection
         </p>
       </section>
-      {!isWideScreen && (
-        <section className={main_btn}>
-          <Button
-            size={BUTTON_SIZE.LARGE}
-            onClick={handleOpenModal}
-            text={BUTTON_OPTIONS.ADD_SNEAKERS}
-          />
-        </section>
-      )}
+
+      <section className={`${main_btn} ${small_screen}`}>
+        <Button
+          size={BUTTON_SIZE.LARGE}
+          onClick={handleOpenModal}
+          text={BUTTON_OPTIONS.ADD_SNEAKERS}
+        />
+      </section>
     </>
   );
 };

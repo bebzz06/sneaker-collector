@@ -20,7 +20,7 @@ const Button: React.FC<IButtonProps> = ({
   const toggleState = () => {
     setIsActive(!isActive);
   };
-  console.log(isActive, "HERE");
+
   return (
     <button
       type={type}
