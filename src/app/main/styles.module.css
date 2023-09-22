@@ -66,6 +66,9 @@
   .main_sort_by {
     flex-direction: column;
   }
+  .small_screen {
+    display: none;
+  }
 }
 /* Ipad OS 14.7.1 and below */
 @media screen and (max-width: 50.625em) {

@@ -1,6 +1,6 @@
-import { ISneakers } from "main/constants";
+import { ISneaker } from "main/constants";
 
-export const dummyData: ISneakers[] = [
+export const dummyData: ISneaker[] = [
   {
     name: "Air Jordan",
     brand: "Nike",

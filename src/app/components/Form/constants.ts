@@ -1,9 +1,9 @@
 export interface IFormData {
   name: string;
   brand: string;
-  size: number;
+  size: number | null;
   price: number;
-  year: number;
+  year: number | null;
 }
 
 export enum INPUT_TYPE {

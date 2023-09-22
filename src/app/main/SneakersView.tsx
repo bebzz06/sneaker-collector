@@ -19,13 +19,18 @@ const {
 
 const SneakersView: React.FC<IMainPageViewProps> = ({
   openModal,
-
   sneakers,
+  removeSneakers,
 }) => {
+  console.log("sneakers view rendered");
   const handleOpenModal = () => {
     openModal();
   };
-
+  const handleRemoveSneaker = (id: string) => {
+    if (removeSneakers) {
+      removeSneakers(id);
+    }
+  };
   return (
     <>
       <section className={`${main_search} ${wide_screen}`}>
@@ -58,6 +63,7 @@ const SneakersView: React.FC<IMainPageViewProps> = ({
             year={sneaker.year}
             _id={sneaker._id}
             key={sneaker._id}
+            onRemoveSneaker={handleRemoveSneaker}
           />
         ))}
       </section>

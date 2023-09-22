@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { useForm } from "react-hook-form";
 import FormField from "./FormField";
 import Button from "../Button/Button";
@@ -10,29 +9,40 @@ import {
   BUTTON_SIZE,
   BUTTON_OPTIONS,
 } from "components/Button/constants";
-import { submitSneakers } from "lib/fetchSneakers";
-
+import { getSneakers, submitSneakers } from "lib/fetchSneakers";
+import { ISneaker } from "main/constants";
+import { useNotification } from "lib/NotificationContext";
 interface IFormProps {
   onClose: () => void;
+  addSneaker: (newSneakers: ISneaker[]) => void;
 }
+
 const { btn_spacing_error, btn_spacing, w_btn } = styles;
-const Form: React.FC<IFormProps> = ({ onClose }) => {
+const Form: React.FC<IFormProps> = ({ onClose, addSneaker }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormData>();
 
+  const { showError, showLoading, hideLoading } = useNotification();
+  console.log("form rendered");
   const onSubmit = async (data: IFormData) => {
     try {
+      showLoading();
       await submitSneakers(data);
+      const newSneakers = await getSneakers();
+      //have to get sneakers because the id from api is needed.
+      addSneaker(newSneakers);
     } catch (err) {
       console.log(err, "ERROR");
+      showError();
     } finally {
+      hideLoading();
       onClose();
     }
   };
-  const isError = Object.keys(errors).length;
+  const isInputError = Object.keys(errors).length;
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {FORM_FIELDS_SCHEMA.map((field) => (
@@ -45,7 +55,7 @@ const Form: React.FC<IFormProps> = ({ onClose }) => {
           key={field.name}
         />
       ))}
-      <div className={isError ? btn_spacing_error : btn_spacing}>
+      <div className={isInputError ? btn_spacing_error : btn_spacing}>
         <Button
           customClass={w_btn}
           size={BUTTON_SIZE.LARGE}

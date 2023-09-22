@@ -1,3 +1,4 @@
+"use client";
 import styles from "./styles.module.css";
 import { Collection } from "assets/images/Collection";
 import { Search, Button } from "components";
@@ -15,6 +16,7 @@ const {
 } = styles;
 
 const EmptyView: React.FC<IMainPageViewProps> = ({ openModal }) => {
+  console.log("Empty view rendered");
   const handleOpenModal = () => {
     openModal();
   };

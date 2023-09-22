@@ -1,6 +1,6 @@
-"use client";
 import React from "react";
 import styles from "./styles.module.css";
+import { NotificationProvider } from "lib/NotificationContext";
 
 const { main_wrapper, main_title } = styles;
 const CreateLayout = ({ children }: { children: React.ReactNode }) => {
@@ -9,7 +9,7 @@ const CreateLayout = ({ children }: { children: React.ReactNode }) => {
       <section className={main_title}>
         <div className="title ">Your collection</div>
       </section>
-      {children}
+      <NotificationProvider>{children}</NotificationProvider>
     </main>
   );
 };

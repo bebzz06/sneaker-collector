@@ -1,15 +1,14 @@
-import axios from "axios";
+"use client";
 import TrashIcon from "./TrashIcon";
 import styles from "./styles.module.css";
+import { ISneaker } from "main/constants";
+import { deleteSneaker } from "lib/fetchSneakers";
+import { useNotification } from "lib/NotificationContext";
 
-interface ISneakerCardProps {
-  _id: string;
-  name: string;
-  brand: string;
-  price: number;
-  size: number;
-  year: number;
+interface ISneakerCardProps extends ISneaker {
+  onRemoveSneaker: (id: string) => void;
 }
+
 const {
   card_brand,
   card_container,
@@ -29,22 +28,26 @@ const SneakerCard: React.FC<ISneakerCardProps> = ({
   size,
   year,
   _id,
+  onRemoveSneaker,
 }) => {
-  const deleteSneaker = async () => {
-    //loading?
+  const { showLoading, hideLoading, showError } = useNotification();
+  const removeSneaker = async () => {
     try {
-      const url = `${process.env.NEXT_PUBLIC_SNEAKERS_APP_ENDPOINT}/${_id}`;
-      axios.delete(url);
-      //update state, so that the useEffect updates itself.
+      showLoading();
+      deleteSneaker(_id);
     } catch (error) {
       console.log(error);
+      showError();
+    } finally {
+      hideLoading();
+      onRemoveSneaker(_id);
     }
   };
   return (
     <div className={card_container}>
       <div className={card_header}>
         <h3 className={card_name}>{name}</h3>
-        <TrashIcon onClick={deleteSneaker} className={trash_icon} />
+        <TrashIcon onClick={removeSneaker} className={trash_icon} />
         <span className={card_brand}>{brand}</span>
       </div>
       <div className={card_details}>

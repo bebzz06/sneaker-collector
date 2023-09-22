@@ -34,7 +34,8 @@
 
 /* 
 /* Ipad OS 14.7.1 and below */
-@media screen and (max-width: 50.625em) {
+/* max-width: 50.625em */
+@media screen and (max-width: 1095px) {
   .welcome_wrapper {
     /* flexible spacing */
     padding-left: 2.36559139785vh;

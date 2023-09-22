@@ -1,5 +1,11 @@
-// import SearchView from "main/SearchView";
+import { redirect } from "next/navigation";
+import { getSneakers } from "lib/fetchSneakers";
 
-export default function Home() {
-  return <>{/* <SearchView /> */}</>;
+export default async function Home() {
+  const data = await getSneakers();
+
+  if (data.length === 0) {
+    redirect("/create");
+  }
+  redirect("/main");
 }
