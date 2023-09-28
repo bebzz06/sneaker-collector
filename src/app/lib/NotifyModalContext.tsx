@@ -3,21 +3,23 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-interface INotificationContext {
+interface INotifyModalContext {
   isLoading: boolean;
   showLoading: (message?: string) => void;
   hideLoading: () => void;
   isError: boolean;
   showError: (message?: string) => void;
   hideError: () => void;
+  isModalOpen: boolean;
+  toggleModalDisplay: () => void;
 }
 
-const NotificationContext = createContext<INotificationContext | undefined>(
+const NotifyModalContext = createContext<INotifyModalContext | undefined>(
   undefined
 );
 
-export const useNotification = () => {
-  const context = useContext(NotificationContext);
+export const useNotifyModalContext = () => {
+  const context = useContext(NotifyModalContext);
   if (!context) {
     throw new Error(
       "useNotification must be used within a NotificationProvider"
@@ -26,16 +28,16 @@ export const useNotification = () => {
   return context;
 };
 
-interface INotificationProviderProps {
+interface INotifyModalProviderProps {
   children: ReactNode;
 }
 
-export const NotificationProvider: React.FC<INotificationProviderProps> = ({
+export const NotifyModalProvider: React.FC<INotifyModalProviderProps> = ({
   children,
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState<boolean>(false);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const showLoading = (message?: string) => {
     setIsLoading(true);
     toast.info(message || "Loading...", { autoClose: false });
@@ -55,9 +57,9 @@ export const NotificationProvider: React.FC<INotificationProviderProps> = ({
     setIsError(false);
     toast.dismiss();
   };
-
+  const toggleModalDisplay = () => setIsModalOpen(!isModalOpen);
   return (
-    <NotificationContext.Provider
+    <NotifyModalContext.Provider
       value={{
         isLoading,
         showLoading,
@@ -65,10 +67,12 @@ export const NotificationProvider: React.FC<INotificationProviderProps> = ({
         isError,
         showError,
         hideError,
+        isModalOpen,
+        toggleModalDisplay,
       }}
     >
       {children}
       <ToastContainer />
-    </NotificationContext.Provider>
+    </NotifyModalContext.Provider>
   );
 };

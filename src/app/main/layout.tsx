@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
-import { NotificationProvider } from "lib/NotificationContext";
+import { NotifyModalProvider } from "lib/NotifyModalContext";
+import { SneakersProvider } from "lib/SneakersContext";
 
 const { main_wrapper, main_title } = styles;
 const CreateLayout = ({ children }: { children: React.ReactNode }) => {
@@ -9,7 +10,9 @@ const CreateLayout = ({ children }: { children: React.ReactNode }) => {
       <section className={main_title}>
         <div className="title ">Your collection</div>
       </section>
-      <NotificationProvider>{children}</NotificationProvider>
+      <NotifyModalProvider>
+        <SneakersProvider>{children}</SneakersProvider>
+      </NotifyModalProvider>
     </main>
   );
 };

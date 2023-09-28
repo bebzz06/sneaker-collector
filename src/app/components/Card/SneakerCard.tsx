@@ -3,11 +3,10 @@ import TrashIcon from "./TrashIcon";
 import styles from "./styles.module.css";
 import { ISneaker } from "main/constants";
 import { deleteSneaker } from "lib/fetchSneakers";
-import { useNotification } from "lib/NotificationContext";
+import { useNotifyModalContext } from "lib/NotifyModalContext";
+import { useSneakersContext } from "lib/SneakersContext";
 
-interface ISneakerCardProps extends ISneaker {
-  onRemoveSneaker: (id: string) => void;
-}
+interface ISneakerCardProps extends ISneaker {}
 
 const {
   card_brand,
@@ -28,13 +27,14 @@ const SneakerCard: React.FC<ISneakerCardProps> = ({
   size,
   year,
   _id,
-  onRemoveSneaker,
 }) => {
-  const { showLoading, hideLoading, showError } = useNotification();
+  const { onRemoveSneaker } = useSneakersContext();
+  const { showLoading, hideLoading, showError } = useNotifyModalContext();
   const removeSneaker = async () => {
     try {
       showLoading();
       deleteSneaker(_id);
+      //fecth again?
     } catch (error) {
       console.log(error);
       showError();

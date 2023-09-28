@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 const { image } = styles;
-export const Collection = () => {
+const Collection = () => {
   return (
     <svg
       className={image}
@@ -73,3 +73,4 @@ export const Collection = () => {
     </svg>
   );
 };
+export default Collection;

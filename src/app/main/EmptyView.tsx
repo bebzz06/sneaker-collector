@@ -1,9 +1,10 @@
 "use client";
 import styles from "./styles.module.css";
-import { Collection } from "assets/images/Collection";
+import { Collection } from "assets/images";
 import { Search, Button } from "components";
-import { IMainPageViewProps } from "./constants";
 import { BUTTON_OPTIONS, BUTTON_SIZE } from "components/Button/constants";
+import { useNotifyModalContext } from "lib/NotifyModalContext";
+
 const {
   btn_widescreen,
   main_btn,
@@ -15,25 +16,22 @@ const {
   small_screen,
 } = styles;
 
-const EmptyView: React.FC<IMainPageViewProps> = ({ openModal }) => {
-  console.log("Empty view rendered");
-  const handleOpenModal = () => {
-    openModal();
-  };
+const EmptyView: React.FC = () => {
+  const { toggleModalDisplay } = useNotifyModalContext();
   return (
     <>
       <section className={`${main_search} ${wide_screen}`}>
-        <Search />
+        <Search isDisabled />
         <Button
           size={BUTTON_SIZE.LARGE}
           customClass={btn_widescreen}
-          onClick={handleOpenModal}
+          onClick={() => toggleModalDisplay()}
           text={BUTTON_OPTIONS.ADD_SNEAKERS}
         />
       </section>
 
       <section className={`${main_search} ${mb_large} ${small_screen}`}>
-        <Search />
+        <Search isDisabled />
       </section>
 
       <section className={main_img}>
@@ -49,7 +47,7 @@ const EmptyView: React.FC<IMainPageViewProps> = ({ openModal }) => {
       <section className={`${main_btn} ${small_screen}`}>
         <Button
           size={BUTTON_SIZE.LARGE}
-          onClick={handleOpenModal}
+          onClick={() => toggleModalDisplay()}
           text={BUTTON_OPTIONS.ADD_SNEAKERS}
         />
       </section>

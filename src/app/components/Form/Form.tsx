@@ -10,36 +10,34 @@ import {
   BUTTON_OPTIONS,
 } from "components/Button/constants";
 import { getSneakers, submitSneakers } from "lib/fetchSneakers";
-import { ISneaker } from "main/constants";
-import { useNotification } from "lib/NotificationContext";
-interface IFormProps {
-  onClose: () => void;
-  addSneaker: (newSneakers: ISneaker[]) => void;
-}
+import { useNotifyModalContext } from "lib/NotifyModalContext";
+import { useSneakersContext } from "lib/SneakersContext";
 
 const { btn_spacing_error, btn_spacing, w_btn } = styles;
-const Form: React.FC<IFormProps> = ({ onClose, addSneaker }) => {
+const Form: React.FC = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormData>();
 
-  const { showError, showLoading, hideLoading } = useNotification();
-  console.log("form rendered");
+  const { showError, showLoading, hideLoading, toggleModalDisplay } =
+    useNotifyModalContext();
+  const { handleSetSneakers, resetSearchQuery } = useSneakersContext();
   const onSubmit = async (data: IFormData) => {
     try {
       showLoading();
       await submitSneakers(data);
       const newSneakers = await getSneakers();
       //have to get sneakers because the id from api is needed.
-      addSneaker(newSneakers);
+      handleSetSneakers(newSneakers);
+      resetSearchQuery();
     } catch (err) {
       console.log(err, "ERROR");
       showError();
     } finally {
       hideLoading();
-      onClose();
+      toggleModalDisplay();
     }
   };
   const isInputError = Object.keys(errors).length;

@@ -1,38 +1,43 @@
 "use client";
-import { useState, useEffect } from "react";
-import { Modal, Form } from "components";
+import { useEffect } from "react";
+//views
 import EmptyView from "./EmptyView";
 import SneakersView from "./SneakersView";
+//components
+import { Modal, Form } from "components";
 import { getSneakers } from "lib/fetchSneakers";
-import { ISneaker } from "./constants";
-import { useNotification } from "lib/NotificationContext";
+//state
+import { useNotifyModalContext } from "lib/NotifyModalContext";
+import { useSneakersContext } from "lib/SneakersContext";
 
 const Page = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [sneakers, setSneakers] = useState<ISneaker[]>([]);
-  const { showError, showLoading, hideLoading } = useNotification();
-  const toggleModalDisplay = () => setIsModalOpen(!isModalOpen);
-  console.log("Main page rendered");
+  const { sneakers, handleSetSneakers, query } = useSneakersContext();
+
+  const { showError, showLoading, hideLoading } = useNotifyModalContext();
+
   const fetchSneakers = async () => {
-    let data;
+    let res;
     try {
       showLoading();
-      data = await getSneakers();
+      res = await getSneakers();
     } catch (error) {
       console.log(error);
       showError();
     } finally {
       hideLoading();
-      setSneakers(data);
+      handleSetSneakers(res);
       return;
     }
   };
-  const removeSneakers = (id: string) => {
-    const newSneakers = sneakers.filter((sneaker) => sneaker._id !== id);
-    setSneakers(newSneakers);
-  };
-  const addSneaker = (newSneakers: ISneaker[]) => {
-    setSneakers(newSneakers);
+
+  const isEmptyview = sneakers?.length === 0 && query === "";
+  const renderView = () => {
+    switch (true) {
+      case isEmptyview:
+        return <EmptyView />;
+      default:
+        return <SneakersView />;
+    }
   };
 
   useEffect(() => {
@@ -41,17 +46,9 @@ const Page = () => {
 
   return (
     <>
-      {sneakers?.length > 0 ? (
-        <SneakersView
-          sneakers={sneakers}
-          removeSneakers={removeSneakers}
-          openModal={toggleModalDisplay}
-        />
-      ) : (
-        <EmptyView openModal={toggleModalDisplay} />
-      )}
-      <Modal isOpen={isModalOpen} onClose={toggleModalDisplay}>
-        <Form addSneaker={addSneaker} onClose={toggleModalDisplay} />
+      {renderView()}
+      <Modal>
+        <Form />
       </Modal>
     </>
   );
