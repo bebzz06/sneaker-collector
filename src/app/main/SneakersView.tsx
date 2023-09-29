@@ -1,7 +1,14 @@
 "use client";
 import styles from "./styles.module.css";
 //components
-import { Search, Button, InputSelect, SneakerCard, SortBy } from "components";
+import {
+  Search,
+  Button,
+  InputSelect,
+  SneakerCard,
+  SortBy,
+  SearchResults,
+} from "components";
 //assets
 import { NoResults } from "assets/images";
 //state
@@ -20,14 +27,17 @@ const {
   main_sort_by,
   wide_screen,
   small_screen,
-  main_img,
+  main_no_results_container,
   main_text,
+  main_search_results,
 } = styles;
 //add search view in here
 const SneakersView: React.FC = () => {
-  const { sneakers, isSearchDisabled } = useSneakersContext();
+  const { sneakers, isSearchDisabled, brandCounts } = useSneakersContext();
   const { toggleModalDisplay } = useNotifyModalContext();
   const areResultsFound = sneakers.length > 0;
+
+  console.log(brandCounts);
   return (
     <>
       <section className={`${main_search} ${wide_screen}`}>
@@ -39,6 +49,11 @@ const SneakersView: React.FC = () => {
           text={BUTTON_OPTIONS.ADD_SNEAKERS}
         />
       </section>
+      {brandCounts && (
+        <section className={`${main_search_results} ${wide_screen}`}>
+          <SearchResults />
+        </section>
+      )}
       <section className={`${main_sort_by} ${wide_screen}`}>
         <SortBy />
       </section>
@@ -49,6 +64,13 @@ const SneakersView: React.FC = () => {
       <section className={`${main_search} ${small_screen}`}>
         <Search isDisabled={isSearchDisabled} />
       </section>
+
+      {brandCounts && (
+        <section className={`${main_search_results} ${small_screen}`}>
+          <SearchResults />
+        </section>
+      )}
+
       {areResultsFound ? (
         <>
           <section className={main_sneaker_cards}>
@@ -67,7 +89,7 @@ const SneakersView: React.FC = () => {
         </>
       ) : (
         <>
-          <section className={main_img}>
+          <section className={main_no_results_container}>
             <NoResults />
           </section>
           <section className={main_text}>

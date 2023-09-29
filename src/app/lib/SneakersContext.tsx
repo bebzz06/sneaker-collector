@@ -6,6 +6,7 @@ interface ISneakersContext {
   query: string;
   isSearchDisabled: boolean;
   sneakers: ISneaker[];
+  brandCounts: [string, number][] | null;
   handleQueryChange: (newQuery: string) => void;
   handleSetSneakers: (sneakers: ISneaker[]) => void;
   onRemoveSneaker: (id: string) => void;
@@ -53,7 +54,20 @@ export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
   const filteredSneakers = sneakers?.filter((sneaker) => {
     return sneaker.brand.toLowerCase().includes(query.toLowerCase());
   });
+  const getUniqueBrandCounts = () => {
+    const brandCounts: Record<string, number> = {};
+    if (query !== "" && filteredSneakers.length > 0) {
+      filteredSneakers.forEach((sneaker) => {
+        const brand = sneaker.brand;
+        brandCounts[brand] = (brandCounts[brand] || 0) + 1;
+      });
+      const brandCountPairs = Object.entries(brandCounts);
 
+      return brandCountPairs;
+    }
+    return null;
+  };
+  const brandCounts = getUniqueBrandCounts();
   return (
     <SneakersContext.Provider
       value={{
@@ -65,6 +79,7 @@ export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
         isSearchDisabled,
         handleSetIsSearchDisabled,
         resetSearchQuery,
+        brandCounts,
       }}
     >
       {children}
