@@ -8,17 +8,11 @@ const Button: React.FC<IButtonProps> = ({
   customClass,
   type = BUTTON_TYPE.BUTTON,
   size,
+  isActive,
   onClick,
 }) => {
-  const [isActive, setIsActive] = useState(false);
-
   const handleClick = () => {
     onClick?.();
-
-    size === BUTTON_SIZE.SMALL && toggleState();
-  };
-  const toggleState = () => {
-    setIsActive(!isActive);
   };
 
   return (

@@ -24,7 +24,7 @@ const SneakerCard: React.FC<ISneakerCardProps> = ({
   name,
   brand,
   price,
-  size,
+  sizeUs,
   year,
   _id,
 }) => {
@@ -56,7 +56,7 @@ const SneakerCard: React.FC<ISneakerCardProps> = ({
           <p>Year</p>
         </div>
         <div className={card_size}>
-          <p className={subhead}>{size}US</p>
+          <p className={subhead}>{sizeUs}US</p>
           <p>Size</p>
         </div>
         <div className={card_price}>

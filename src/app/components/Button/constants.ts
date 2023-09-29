@@ -20,4 +20,5 @@ export interface IButtonProps {
   size: BUTTON_SIZE;
   customClass?: string;
   onClick?: () => void;
+  isActive?: boolean;
 }

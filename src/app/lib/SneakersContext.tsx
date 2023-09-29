@@ -1,17 +1,22 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from "react";
-import { ISneaker } from "main/constants";
+import { ISneaker, sortingOptions } from "main/constants";
 interface ISneakersContext {
   query: string;
   isSearchDisabled: boolean;
   sneakers: ISneaker[];
   brandCounts: [string, number][] | null;
+  activeSortingOption: string;
   handleQueryChange: (newQuery: string) => void;
   handleSetSneakers: (sneakers: ISneaker[]) => void;
   onRemoveSneaker: (id: string) => void;
   handleSetIsSearchDisabled: (isDisabled: boolean) => void;
   resetSearchQuery: () => void;
+  sortByOldestYear: () => ISneaker[];
+  sortByCheapestPrice: () => ISneaker[];
+  sortBySmallestSize: () => ISneaker[];
+  handleActiveSortingOption: (sortingOption: string) => void;
 }
 
 const SneakersContext = createContext<ISneakersContext | undefined>(undefined);
@@ -30,27 +35,37 @@ interface ISneakersProviderProps {
 export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
   children,
 }) => {
+  //data
   const [query, setQuery] = useState("");
   const [sneakers, setSneakers] = useState<ISneaker[]>([]);
   const [isSearchDisabled, setIsSearchDisabled] = useState(false);
 
+  const [activeSortingOption, setActiveSortingOption] = useState<string>(
+    sortingOptions.oldest
+  );
+
+  //setters
   const handleSetSneakers = (sneakers: ISneaker[]) => {
     setSneakers(sneakers);
-  };
-  const onRemoveSneaker = (id: string) => {
-    const newSneakers = sneakers.filter((sneaker) => sneaker._id !== id);
-    setSneakers(newSneakers);
   };
   const handleQueryChange = (newQuery: string) => {
     setQuery(newQuery);
   };
-
   const handleSetIsSearchDisabled = (isDisabled: boolean) => {
     setIsSearchDisabled(isDisabled);
   };
   const resetSearchQuery = () => {
     setQuery("");
   };
+  const handleActiveSortingOption = (sortingOption: string) => {
+    setActiveSortingOption(sortingOption);
+  };
+  //methods
+  const onRemoveSneaker = (id: string) => {
+    const newSneakers = sneakers.filter((sneaker) => sneaker._id !== id);
+    setSneakers(newSneakers);
+  };
+
   const filteredSneakers = sneakers?.filter((sneaker) => {
     return sneaker.brand.toLowerCase().includes(query.toLowerCase());
   });
@@ -68,6 +83,21 @@ export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
     return null;
   };
   const brandCounts = getUniqueBrandCounts();
+  const sortByOldestYear = () => {
+    return sneakers.slice().sort((a, b) => {
+      return a.year - b.year;
+    });
+  };
+  const sortByCheapestPrice = () => {
+    return sneakers.slice().sort((a, b) => {
+      return a.price - b.price;
+    });
+  };
+  const sortBySmallestSize = () => {
+    return sneakers.slice().sort((a, b) => {
+      return a.sizeUs - b.sizeUs;
+    });
+  };
   return (
     <SneakersContext.Provider
       value={{
@@ -80,6 +110,11 @@ export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
         handleSetIsSearchDisabled,
         resetSearchQuery,
         brandCounts,
+        sortByOldestYear,
+        sortByCheapestPrice,
+        sortBySmallestSize,
+        activeSortingOption,
+        handleActiveSortingOption,
       }}
     >
       {children}

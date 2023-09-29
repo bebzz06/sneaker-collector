@@ -31,13 +31,12 @@ const {
   main_text,
   main_search_results,
 } = styles;
-//add search view in here
+
 const SneakersView: React.FC = () => {
-  const { sneakers, isSearchDisabled, brandCounts } = useSneakersContext();
+  const { sneakers, isSearchDisabled, brandCounts, activeSortingOption } =
+    useSneakersContext();
   const { toggleModalDisplay } = useNotifyModalContext();
   const areResultsFound = sneakers.length > 0;
-
-  console.log(brandCounts);
   return (
     <>
       <section className={`${main_search} ${wide_screen}`}>
@@ -79,7 +78,7 @@ const SneakersView: React.FC = () => {
                 name={sneaker.name}
                 brand={sneaker.brand}
                 price={sneaker.price}
-                size={sneaker.size}
+                sizeUs={sneaker.sizeUs}
                 year={sneaker.year}
                 _id={sneaker._id}
                 key={sneaker._id}
