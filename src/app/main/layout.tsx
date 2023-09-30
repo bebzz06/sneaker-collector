@@ -10,9 +10,9 @@ const CreateLayout = ({ children }: { children: React.ReactNode }) => {
       <section className={main_title}>
         <div className="title ">Your collection</div>
       </section>
-      <NotifyModalProvider>
-        <SneakersProvider>{children}</SneakersProvider>
-      </NotifyModalProvider>
+      <SneakersProvider>
+        <NotifyModalProvider>{children}</NotifyModalProvider>
+      </SneakersProvider>
     </main>
   );
 };

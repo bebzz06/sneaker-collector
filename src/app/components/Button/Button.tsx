@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import { IButtonProps, BUTTON_TYPE, BUTTON_SIZE } from "./constants";
+import { IButtonProps, BUTTON_TYPE } from "./constants";
 import { getButtonClassName, getIcon } from "./utils";
 
 const Button: React.FC<IButtonProps> = ({
@@ -8,18 +7,19 @@ const Button: React.FC<IButtonProps> = ({
   customClass,
   type = BUTTON_TYPE.BUTTON,
   size,
-  isActive,
+  isActive = true,
+  isDisabled = false,
   onClick,
 }) => {
   const handleClick = () => {
     onClick?.();
   };
-
   return (
     <button
       type={type}
       className={getButtonClassName(size, customClass, isActive)}
       onClick={handleClick}
+      disabled={isDisabled}
     >
       {getIcon(text)}
       {text}

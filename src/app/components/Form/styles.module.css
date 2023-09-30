@@ -29,7 +29,24 @@
 .error_message {
   color: red;
 }
+.edit_form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.btn_edit {
+  background: var(--Red, #ef233c);
+  color: #ffffff;
+}
 
+.btn_edit svg path {
+  fill: #ffffff;
+}
+.disabled {
+  color: var(--Gray-50, #808080);
+  background: var(--Gray-80, #ccc);
+  font-weight: 500;
+}
 @media screen and (max-width: 75.75em) {
   .btn_spacing {
     padding-top: 36.2790697674%;

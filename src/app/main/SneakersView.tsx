@@ -33,10 +33,11 @@ const {
 } = styles;
 
 const SneakersView: React.FC = () => {
-  const { sneakers, isSearchDisabled, brandCounts, activeSortingOption } =
-    useSneakersContext();
+  const { sneakers, isSearchDisabled, brandCounts } = useSneakersContext();
   const { toggleModalDisplay } = useNotifyModalContext();
+
   const areResultsFound = sneakers.length > 0;
+  //handle error when sneakers are undefined I guess
   return (
     <>
       <section className={`${main_search} ${wide_screen}`}>
@@ -82,6 +83,7 @@ const SneakersView: React.FC = () => {
                 year={sneaker.year}
                 _id={sneaker._id}
                 key={sneaker._id}
+                editSneaker={() => toggleModalDisplay()}
               />
             ))}
           </section>

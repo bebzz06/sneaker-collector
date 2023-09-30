@@ -31,3 +31,16 @@ export const submitSneakers = async (data: IFormData) => {
     throw new Error(`Request failed with status: ${response.status}`);
   }
 };
+export const updateSneaker = async (data: IFormData, id: string) => {
+  const url = `${process.env.NEXT_PUBLIC_SNEAKERS_APP_ENDPOINT}/${id}`;
+  const response = await fetch(url, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  if (!response.ok) {
+    throw new Error(`Request failed with status: ${response.status}`);
+  }
+};

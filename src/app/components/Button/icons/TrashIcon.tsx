@@ -1,6 +1,6 @@
 interface ITrashIconProps {
   className?: string;
-  onClick: () => void;
+  onClick?: (e: React.MouseEvent) => void;
 }
 const TrashIcon: React.FC<ITrashIconProps> = ({ className, onClick }) => {
   return (

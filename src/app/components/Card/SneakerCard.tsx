@@ -1,12 +1,14 @@
 "use client";
-import TrashIcon from "./TrashIcon";
+import { TrashIcon } from "components/Button/icons";
 import styles from "./styles.module.css";
 import { ISneaker } from "main/constants";
 import { deleteSneaker } from "lib/fetchSneakers";
 import { useNotifyModalContext } from "lib/NotifyModalContext";
 import { useSneakersContext } from "lib/SneakersContext";
 
-interface ISneakerCardProps extends ISneaker {}
+interface ISneakerCardProps extends ISneaker {
+  editSneaker: () => void;
+}
 
 const {
   card_brand,
@@ -27,14 +29,15 @@ const SneakerCard: React.FC<ISneakerCardProps> = ({
   sizeUs,
   year,
   _id,
+  editSneaker,
 }) => {
-  const { onRemoveSneaker } = useSneakersContext();
+  const { onRemoveSneaker, handleSetSelectedSneaker } = useSneakersContext();
   const { showLoading, hideLoading, showError } = useNotifyModalContext();
-  const removeSneaker = async () => {
+  const handleRemoveSneaker = async (e: React.MouseEvent) => {
+    e.stopPropagation();
     try {
       showLoading();
       deleteSneaker(_id);
-      //fecth again?
     } catch (error) {
       console.log(error);
       showError();
@@ -43,11 +46,15 @@ const SneakerCard: React.FC<ISneakerCardProps> = ({
       onRemoveSneaker(_id);
     }
   };
+  const handleEditSneaker = () => {
+    editSneaker();
+    handleSetSelectedSneaker({ name, brand, price, sizeUs, year, _id });
+  };
   return (
-    <div className={card_container}>
+    <div className={card_container} onClick={handleEditSneaker}>
       <div className={card_header}>
         <h3 className={card_name}>{name}</h3>
-        <TrashIcon onClick={removeSneaker} className={trash_icon} />
+        <TrashIcon onClick={handleRemoveSneaker} className={trash_icon} />
         <span className={card_brand}>{brand}</span>
       </div>
       <div className={card_details}>

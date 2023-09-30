@@ -12,6 +12,8 @@ export enum BUTTON_OPTIONS {
   LOWEST_PRICE = "Lowest Price",
   START_COLLECTION = "Start your new collection",
   ADD_SNEAKERS = "Add new sneakers",
+  SAVE = "Save",
+  DELETE = "Delete",
 }
 
 export interface IButtonProps {
@@ -21,4 +23,5 @@ export interface IButtonProps {
   customClass?: string;
   onClick?: () => void;
   isActive?: boolean;
+  isDisabled?: boolean;
 }

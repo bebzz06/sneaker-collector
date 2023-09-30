@@ -17,6 +17,10 @@ interface ISneakersContext {
   sortByCheapestPrice: () => ISneaker[];
   sortBySmallestSize: () => ISneaker[];
   handleActiveSortingOption: (sortingOption: string) => void;
+  selectedSneaker: ISneaker | null;
+  handleSetSelectedSneaker: (sneaker: ISneaker) => void;
+  deselectSneaker: () => void;
+  handleSneakerUpdate: (newSneaker: ISneaker) => void;
 }
 
 const SneakersContext = createContext<ISneakersContext | undefined>(undefined);
@@ -39,9 +43,11 @@ export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
   const [query, setQuery] = useState("");
   const [sneakers, setSneakers] = useState<ISneaker[]>([]);
   const [isSearchDisabled, setIsSearchDisabled] = useState(false);
-
   const [activeSortingOption, setActiveSortingOption] = useState<string>(
     sortingOptions.oldest
+  );
+  const [selectedSneaker, setSelectedSneakers] = useState<ISneaker | null>(
+    null
   );
 
   //setters
@@ -59,6 +65,12 @@ export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
   };
   const handleActiveSortingOption = (sortingOption: string) => {
     setActiveSortingOption(sortingOption);
+  };
+  const handleSetSelectedSneaker = (sneaker: ISneaker) => {
+    setSelectedSneakers(sneaker);
+  };
+  const deselectSneaker = () => {
+    setSelectedSneakers(null);
   };
   //methods
   const onRemoveSneaker = (id: string) => {
@@ -98,6 +110,16 @@ export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
       return a.sizeUs - b.sizeUs;
     });
   };
+  const handleSneakerUpdate = (newSneaker: ISneaker) => {
+    const updatedSneakers = sneakers.map((sneaker) => {
+      if (sneaker._id === newSneaker._id) {
+        return newSneaker;
+      } else {
+        return sneaker;
+      }
+    });
+    setSneakers(updatedSneakers);
+  };
   return (
     <SneakersContext.Provider
       value={{
@@ -115,6 +137,10 @@ export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
         sortBySmallestSize,
         activeSortingOption,
         handleActiveSortingOption,
+        selectedSneaker,
+        handleSetSelectedSneaker,
+        deselectSneaker,
+        handleSneakerUpdate,
       }}
     >
       {children}

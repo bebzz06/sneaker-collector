@@ -1,6 +1,7 @@
 "use client";
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { useSneakersContext } from "./SneakersContext";
 import "react-toastify/dist/ReactToastify.css";
 
 interface INotifyModalContext {
@@ -35,6 +36,7 @@ interface INotifyModalProviderProps {
 export const NotifyModalProvider: React.FC<INotifyModalProviderProps> = ({
   children,
 }) => {
+  const { deselectSneaker, selectedSneaker } = useSneakersContext();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -57,7 +59,12 @@ export const NotifyModalProvider: React.FC<INotifyModalProviderProps> = ({
     setIsError(false);
     toast.dismiss();
   };
-  const toggleModalDisplay = () => setIsModalOpen(!isModalOpen);
+  const toggleModalDisplay = () => {
+    if (selectedSneaker) {
+      deselectSneaker();
+    }
+    setIsModalOpen(!isModalOpen);
+  };
   return (
     <NotifyModalContext.Provider
       value={{
