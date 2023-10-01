@@ -14,6 +14,7 @@ export enum BUTTON_OPTIONS {
   ADD_SNEAKERS = "Add new sneakers",
   SAVE = "Save",
   DELETE = "Delete",
+  ERROR = "Try again",
 }
 
 export interface IButtonProps {

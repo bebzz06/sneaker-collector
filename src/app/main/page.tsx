@@ -12,9 +12,7 @@ import { useSneakersContext } from "lib/SneakersContext";
 
 const Page = () => {
   const { sneakers, handleSetSneakers, query } = useSneakersContext();
-
   const { showError, showLoading, hideLoading } = useNotifyModalContext();
-
   const fetchSneakers = async () => {
     let res;
     try {

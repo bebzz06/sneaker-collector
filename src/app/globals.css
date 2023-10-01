@@ -78,9 +78,21 @@ UTILITIES */
   text-align: start;
 }
 
-.border {
+.error_container {
+  display: flex;
+  justify-content: center;
+  margin-left: 5vw;
+  margin-right: 5vw;
   border: 1px solid red;
 }
+.error_handler {
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
+  margin-top: 25vh;
+  margin-bottom: 25vh;
+}
+
 /* Select component classes need to be @global css file to override default styling. */
 .select-container {
   .select__control {
@@ -120,5 +132,14 @@ UTILITIES */
 @media screen and (max-width: 50.625em) {
   .title {
     font-size: 2.25rem;
+  }
+  .error_handler {
+    margin-top: 25vh;
+    margin-bottom: 25vh;
+    flex-direction: column;
+    /* align-items: center; */
+  }
+  .ml_15 {
+    margin-left: 15vw;
   }
 }
