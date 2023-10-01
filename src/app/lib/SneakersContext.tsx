@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode } from "react";
 import { ISneaker, sortingOptions } from "main/constants";
+
 interface ISneakersContext {
   query: string;
   isSearchDisabled: boolean;
@@ -20,7 +21,6 @@ interface ISneakersContext {
   selectedSneaker: ISneaker | null;
   handleSetSelectedSneaker: (sneaker: ISneaker) => void;
   deselectSneaker: () => void;
-  handleSneakerUpdate: (newSneaker: ISneaker) => void;
 }
 
 const SneakersContext = createContext<ISneakersContext | undefined>(undefined);
@@ -110,16 +110,7 @@ export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
       return a.sizeUs - b.sizeUs;
     });
   };
-  const handleSneakerUpdate = (newSneaker: ISneaker) => {
-    const updatedSneakers = sneakers.map((sneaker) => {
-      if (sneaker._id === newSneaker._id) {
-        return newSneaker;
-      } else {
-        return sneaker;
-      }
-    });
-    setSneakers(updatedSneakers);
-  };
+
   return (
     <SneakersContext.Provider
       value={{
@@ -140,7 +131,6 @@ export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
         selectedSneaker,
         handleSetSelectedSneaker,
         deselectSneaker,
-        handleSneakerUpdate,
       }}
     >
       {children}

@@ -6,7 +6,7 @@ import { useSneakersContext } from "lib/SneakersContext";
 import { ISneaker, sortingOptions } from "main/constants";
 import styles from "./styles.module.css";
 
-const SortBy = () => {
+const SortBy: React.FC = () => {
   const {
     sortByCheapestPrice,
     sortByOldestYear,

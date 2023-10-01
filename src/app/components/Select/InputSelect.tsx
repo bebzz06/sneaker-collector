@@ -9,9 +9,12 @@ enum INPUT_SELECT_VALUE {
   SMALLEST = "smallestSize",
   CHEAPEST = "lowestPrice",
 }
-
-const InputSelect = () => {
-  const options = [
+interface IInputSelectOption {
+  value: INPUT_SELECT_VALUE;
+  label: string;
+}
+const InputSelect: React.FC = () => {
+  const options: IInputSelectOption[] = [
     { value: INPUT_SELECT_VALUE.OLDEST, label: "Sort by: Oldest Year" },
     { value: INPUT_SELECT_VALUE.SMALLEST, label: "Sort by: Smallest Size" },
     { value: INPUT_SELECT_VALUE.CHEAPEST, label: "Sort by: Lowest Price" },
@@ -75,7 +78,7 @@ const InputSelect = () => {
     <Select
       options={options}
       classNamePrefix={"select"}
-      defaultValue={defaultValue}
+      value={defaultValue}
       className="select-container"
       onChange={handleSortChange}
     />
