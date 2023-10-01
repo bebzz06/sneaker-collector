@@ -1,34 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Sneaker Collector App
+Welcome to the Sneaker Collector App! This app allows you to collect and manage information about your favorite sneakers. Please note that the API endpoint provided for this app expires every 24 hours, so you may need to set up a new API endpoint if it stops working.
 
-## Getting Started
+## Setting up API:
 
-First, run the development server:
+To get started, follow these steps to set up your own REST API instance:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Go to https://crudcrud.com/.
+Create your own instance by clicking on the "New Project" button.
+Once you have created the instance, you will be assigned a unique API endpoint URL. For example: https://crudcrud.com/api/02298cb371ca4cc29c8271f6710bdefe.
+You can use this endpoint to send GET, POST, and DELETE requests with any structure you define, as long as you send data in JSON format.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Sneaker Input Form:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+In the app, there is a form where users can input sneaker details, including a title, brand, price, size, and year. The form includes validation to ensure that the inputs are not empty.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Sneaker Collection:
 
-## Learn More
+The app displays a list of sneakers in a collection, showing the title and details for each sneaker. Each sneaker item in the collection includes a "Delete" button, allowing users to remove sneakers from the collection.
 
-To learn more about Next.js, take a look at the following resources:
+## Sneaker Sorting:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The app provides users with the option to sort sneakers in the collection by year, shoe size, or price. This feature makes it easy to organize and find sneakers based on different criteria.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Query-like Interaction:
 
-## Deploy on Vercel
+To enhance the user experience, the app includes a search feature. Users can use an input field to search for sneakers by their titles. As the user types in the search input, the displayed sneakers are dynamically updated to match the search query.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feel free to explore and enjoy using the Sneaker Collector App! If you encounter any issues or have any questions, please refer to the API setup instructions or reach out for assistance.
