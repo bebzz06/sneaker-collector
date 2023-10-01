@@ -42,6 +42,7 @@ const ICONS: Record<BUTTON_OPTIONS, ReactNode> = {
   [BUTTON_OPTIONS.DELETE]: <TrashIcon className={mr_8} />,
   [BUTTON_OPTIONS.SAVE]: <></>,
   [BUTTON_OPTIONS.START_COLLECTION]: <></>,
+  [BUTTON_OPTIONS.ERROR]: <></>,
 };
 
 export const getIcon = (text: BUTTON_OPTIONS): ReactNode => {
