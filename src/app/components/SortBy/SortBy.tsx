@@ -21,9 +21,6 @@ const SortBy: React.FC = () => {
 
     handleSetSneakers(sortingFn());
   };
-  useEffect(() => {
-    handleSort(sortByOldestYear, sortingOptions.oldest);
-  }, []);
 
   return (
     <>

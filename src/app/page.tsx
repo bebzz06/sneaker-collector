@@ -3,8 +3,7 @@ import { getSneakers } from "lib/fetchSneakers";
 
 export default async function Home() {
   const data = await getSneakers();
-
-  if (data.length === 0) {
+  if (!data || data.length === 0) {
     redirect("/create");
   }
   redirect("/main");

@@ -21,6 +21,8 @@ interface ISneakersContext {
   selectedSneaker: ISneaker | null;
   handleSetSelectedSneaker: (sneaker: ISneaker) => void;
   deselectSneaker: () => void;
+  activeSortingOptionKey: number;
+  handleSetActiveSortingOptionKey: () => void;
 }
 
 const SneakersContext = createContext<ISneakersContext | undefined>(undefined);
@@ -49,6 +51,8 @@ export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
   const [selectedSneaker, setSelectedSneakers] = useState<ISneaker | null>(
     null
   );
+  const [activeSortingOptionKey, setActiveSortingOptionKey] =
+    useState<number>(0);
 
   //setters
   const handleSetSneakers = (sneakers: ISneaker[]) => {
@@ -110,6 +114,9 @@ export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
       return a.sizeUs - b.sizeUs;
     });
   };
+  const handleSetActiveSortingOptionKey = () => {
+    setActiveSortingOptionKey(activeSortingOptionKey + 1);
+  };
 
   return (
     <SneakersContext.Provider
@@ -131,6 +138,8 @@ export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
         selectedSneaker,
         handleSetSelectedSneaker,
         deselectSneaker,
+        activeSortingOptionKey,
+        handleSetActiveSortingOptionKey,
       }}
     >
       {children}

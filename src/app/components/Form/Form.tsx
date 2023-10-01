@@ -39,6 +39,7 @@ const Form: React.FC = () => {
     selectedSneaker,
     onRemoveSneaker,
     query,
+    handleSetActiveSortingOptionKey,
   } = useSneakersContext();
   const onSubmit = async (data: IFormData) => {
     try {
@@ -67,6 +68,8 @@ const Form: React.FC = () => {
       console.log(err, "ERROR");
       showError();
     } finally {
+      //force remounting InputSelect
+      handleSetActiveSortingOptionKey();
       hideLoading();
       toggleModalDisplay();
     }

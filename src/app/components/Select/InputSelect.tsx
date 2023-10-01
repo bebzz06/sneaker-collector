@@ -27,6 +27,7 @@ const InputSelect: React.FC = () => {
     handleSetSneakers,
     handleActiveSortingOption,
     activeSortingOption,
+    activeSortingOptionKey,
   } = useSneakersContext();
 
   const handleSortChange = (
@@ -72,7 +73,8 @@ const InputSelect: React.FC = () => {
         break;
     }
     handleSortChange(selectedOption);
-  }, [activeSortingOption]);
+    //force remounting of component
+  }, [activeSortingOption, activeSortingOptionKey]);
 
   return (
     <Select
