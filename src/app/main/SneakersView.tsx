@@ -37,7 +37,6 @@ const SneakersView: React.FC = () => {
   const { toggleModalDisplay } = useNotifyModalContext();
 
   const areResultsFound = sneakers.length > 0;
-  //handle error when sneakers are undefined I guess
   return (
     <>
       <section className={`${main_search} ${wide_screen}`}>

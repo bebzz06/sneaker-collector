@@ -146,4 +146,3 @@ export const SneakersProvider: React.FC<ISneakersProviderProps> = ({
     </SneakersContext.Provider>
   );
 };
-//
