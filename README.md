@@ -1,4 +1,4 @@
-Welcome to the Sneaker Collector App! [This app](https://sneaker-collector-two.vercel.app/) allows you to collect and manage information about your favorite sneakers. Please note that the API endpoint provided for this app expires every 24 hours, so you may need to set up a new API endpoint if it stops working.
+Welcome to the Sneaker Collector App! This app allows you to collect and manage information about your favorite sneakers. Please note that the API endpoint provided for this app expires every 24 hours, so you may need to set up a new API endpoint if it stops working.
 
 ## Setting up API:
 
